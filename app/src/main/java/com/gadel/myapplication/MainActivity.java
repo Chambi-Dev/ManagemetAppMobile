@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class MainActivity extends AppCompatActivity {
+    //credenciales temporales para el login
 
     private static String USER = "admin@gmail.com";
     private static String PASS = "12345678";
