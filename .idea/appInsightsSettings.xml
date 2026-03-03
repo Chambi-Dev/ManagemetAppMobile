@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.gadel.myapplication" />
+                  <option name="mobileSdkAppId" value="1:1080685097654:android:6c23900ec85a3117dcac17" />
+                  <option name="projectId" value="aprovalmanagement" />
+                  <option name="projectNumber" value="1080685097654" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

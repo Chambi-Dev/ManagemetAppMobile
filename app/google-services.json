@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1080685097654",
+    "firebase_url": "https://aprovalmanagement-default-rtdb.firebaseio.com",
+    "project_id": "aprovalmanagement",
+    "storage_bucket": "aprovalmanagement.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080685097654:android:6c23900ec85a3117dcac17",
+        "android_client_info": {
+          "package_name": "com.gadel.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDw9GBclaNhKGyJEbmkEtLyCQk5PgKJ4k4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
