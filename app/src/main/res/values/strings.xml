@@ -35,4 +35,34 @@
 
     <string name="btn_registrar">Registrar</string>
     <string name="lbl_tienes_cuenta">Ya tienes cuenta? Inicia Sesion</string>
+
+    <!-- para el dialogo de iniciar sesion -->
+    <string name="log_iniciando_sesion">Iniciando Sesion...</string>
+    <string name="log_error_iniciar_sesion">Correo o Contraseña Incorrectos.</string>
+    <!-- para Validaciones al iniciar session  -->
+    <string name="error_usuario">Debe ingresar un correo valido</string>
+    <string name="error_password">Debe ingresar una contraseña.</string>
+    <!-- para el dialogo de Registro de ususario -->
+    <string name="log_espera">Espera por favor</string>
+    <string name="log_registrando">Resgistrando usuario.</string>
+    <string name="log_guardando">Guardando usuario.</string>
+    <!-- para el Validaciones al registrar -->
+    <string name="error_empty_nombre">esta vacio el campo nombre</string>
+    <string name="error_empty_apellido">esta vacio el apellido</string>
+
+    <string name="error_length_password">Ingrese un password  como minimo de 8 letters</string>
+    <string name="error_confirmar_password">Ingrese la confirmacion de contraseña (min. 8 caracteres)</string>
+    <string name="error_password_diferent">las contraseñas deben ser iguales</string>
+
+    <string name="error_email_ya_Registrado">Este correo ya está registrado. Intenta iniciar sesión.</string>
+    <string name="error_8caracteres_password">La contraseña es muy débil. Usa al menos 8 caracteres.</string>
+
+    <string name="error_correo_invalido">El formato del correo no es válido.</string>
+    <string name="error_guardar_usuario">Errro al guardar usuario</string>
+    <string name="usuario_creado">Usuario creado exitosamente</string>
+    <!-- para el dialogo de iniciar sesion -->
+    <string name="error">Error: </string>
+
+
+
 </resources>

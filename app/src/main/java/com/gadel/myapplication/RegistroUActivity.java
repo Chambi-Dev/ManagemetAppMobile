@@ -61,7 +61,7 @@ public class RegistroUActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Espera porfavor");
+        progressDialog.setTitle(getString(R.string.log_espera));
         progressDialog.setCanceledOnTouchOutside(false);
 
 
@@ -86,31 +86,49 @@ public class RegistroUActivity extends AppCompatActivity {
     }
 
     private void validarDatos() {
+        etNuevoUsuario.setErrorEnabled(false);
+        etNuevoAppelido.setErrorEnabled(false);
+        etNuevoCorreo.setErrorEnabled(false);
+        etNuevaPassword.setErrorEnabled(false);
+        etConfirmarPassword.setErrorEnabled(false);
+
         nombre = etNuevoUsuario.getEditText() != null ? etNuevoUsuario.getEditText().getText().toString().trim() : "";
         apellido = etNuevoAppelido.getEditText() != null ? etNuevoAppelido.getEditText().getText().toString().trim() : "";
         correo = etNuevoCorreo.getEditText() != null ? etNuevoCorreo.getEditText().getText().toString().trim() : "";
         password = etNuevaPassword.getEditText() != null ? etNuevaPassword.getEditText().getText().toString().trim() : "";
         confirmarPassword = etConfirmarPassword.getEditText() != null ? etConfirmarPassword.getEditText().getText().toString().trim() : "";
 
+        boolean error = false;
+
         if (TextUtils.isEmpty(nombre)) {
-            Toast.makeText(this, "esta vacio el campo nombre", Toast.LENGTH_SHORT).show();
+            etNuevoUsuario.setError(getString(R.string.error_empty_nombre));
+            error = true;
         } else if (TextUtils.isEmpty(apellido)) {
-            Toast.makeText(this, "esta vacio el apellido", Toast.LENGTH_SHORT).show();
+            etNuevoAppelido.setError(getString(R.string.error_empty_apellido));
+            error = true;
         } else if (!Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
-            Toast.makeText(this, "Ingresa un correo valido", Toast.LENGTH_SHORT).show();
+            etNuevoCorreo.setError(getString(R.string.error_usuario));
+            error = true;
         } else if (TextUtils.isEmpty(password)|| password.length()<8) {
-            Toast.makeText(this, "Ingrese un password  como minimo de 8 letters", Toast.LENGTH_SHORT).show();
+            etNuevaPassword.setError(getString(R.string.error_length_password));
+            error = true;
         } else if (TextUtils.isEmpty(confirmarPassword)|| confirmarPassword.length()<8) {
-            Toast.makeText(this, "Ingrese la confirmacion de contraseña (min. 8 caracteres)", Toast.LENGTH_SHORT).show();
+            etConfirmarPassword.setError(getString(R.string.error_confirmar_password));
+            error = true;
         } else if (!password.equals(confirmarPassword)) {
-            Toast.makeText(this, "las contraseñas deben ser iguales", Toast.LENGTH_SHORT).show();
+            etNuevaPassword.setError(getString(R.string.error_password_diferent));
+            etConfirmarPassword.setError(getString(R.string.error_password_diferent));
+            error =true;
         }else {
             registrar();
+        }
+        if (error){
+            return;
         }
     }
 
     private void registrar() {
-        progressDialog.setMessage("Registrando Usuario...");
+        progressDialog.setMessage(getString(R.string.log_registrando));
         progressDialog.show();
         mAuth.createUserWithEmailAndPassword(correo, password)
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
@@ -123,13 +141,13 @@ public class RegistroUActivity extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                         progressDialog.dismiss();
                         if (e instanceof FirebaseAuthUserCollisionException) {
-                            Toast.makeText(RegistroUActivity.this, "Este correo ya está registrado. Intenta iniciar sesión.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(RegistroUActivity.this, getString(R.string.error_email_ya_Registrado), Toast.LENGTH_LONG).show();
                         } else if (e instanceof FirebaseAuthWeakPasswordException) {
-                            Toast.makeText(RegistroUActivity.this, "La contraseña es muy débil. Usa al menos 8 caracteres.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(RegistroUActivity.this, getString(R.string.error_8caracteres_password), Toast.LENGTH_LONG).show();
                         } else if (e instanceof FirebaseAuthInvalidCredentialsException) {
-                            Toast.makeText(RegistroUActivity.this, "El formato del correo no es válido.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(RegistroUActivity.this, getString(R.string.error_correo_invalido), Toast.LENGTH_LONG).show();
                         } else {
-                            Toast.makeText(RegistroUActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(RegistroUActivity.this, getString(R.string.error) + e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                         
                     }
@@ -137,7 +155,7 @@ public class RegistroUActivity extends AppCompatActivity {
     }
 
     private void guardarUsuario() {
-        progressDialog.setMessage("Guardando Usuario...");
+        progressDialog.setMessage(getString(R.string.log_guardando));
         progressDialog.show();
 
         String uid = mAuth.getUid();
@@ -153,7 +171,7 @@ public class RegistroUActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Void unused) {
                 progressDialog.dismiss();
-                Toast.makeText(RegistroUActivity.this, "Usuario creado exitosamente", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegistroUActivity.this, getString(R.string.usuario_creado), Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(RegistroUActivity.this, DashboardActivity.class));
                 finish();
             }
@@ -161,7 +179,7 @@ public class RegistroUActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 progressDialog.dismiss();
-                Toast.makeText(RegistroUActivity.this, "Error al guardar usuario: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(RegistroUActivity.this, getString(R.string.error_guardar_usuario)+ e.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 

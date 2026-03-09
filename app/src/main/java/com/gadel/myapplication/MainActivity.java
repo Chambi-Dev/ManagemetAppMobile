@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         progressDialog = new ProgressDialog(MainActivity.this);
-        progressDialog.setTitle("Iniciando sesión");
+        progressDialog.setTitle(getString(R.string.log_iniciando_sesion));
         progressDialog.setCanceledOnTouchOutside(false);
 
         //al pulsar el boton de ingresar
@@ -66,64 +66,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                /*intentos++;
-
-                textEmail.setErrorEnabled(false);
-                textPassword.setErrorEnabled(false);
-
-
-                //leer loq ue el usuario escribio
-                String emailIngrsado = textEmail.getEditText() != null ? textEmail.getEditText().getText().toString().trim() : "";
-                String passIngrsado = textPassword.getEditText() != null ? textPassword.getEditText().getText().toString().trim() : "";
-
-                boolean error = false;
-
-                if (emailIngrsado.isEmpty()) {
-                    textEmail.setError("El email no puede estar vacio");
-                    Toast.makeText(MainActivity.this,"Debe ingresar un email", Toast.LENGTH_SHORT).show();
-                    error = true;
-                } else if (!emailIngrsado.contains("@")) {
-                    textEmail.setError("El email no es valido");
-                    Toast.makeText(MainActivity.this,"El email no es valido", Toast.LENGTH_SHORT).show();
-                    error = true;
-                }
-
-                if (passIngrsado.isEmpty()){
-                    textPassword.setError("La contraseña no puede estar vacia");
-                    Toast.makeText(MainActivity.this,"Debe ingresar una contraseña", Toast.LENGTH_SHORT).show();
-                    error = true;
-                } else if (passIngrsado.length() < 8) {
-                    textPassword.setError("La contraseña debe tener al menos 8 caracteres");
-                    Toast.makeText(MainActivity.this,"La contraseña debe tener al menos 8 caracteres", Toast.LENGTH_SHORT).show();
-                    error = true;
-                }
-
-                if (error){
-                    return;
-                }
-
-                //comparar lo que escribio el usuario con el usuario y contraseña guardados
-                if (emailIngrsado.equals(USER) && passIngrsado.equals(PASS)) {
-                    new AlertDialog.Builder(MainActivity.this)
-                            .setTitle("Exito")
-                            .setMessage("Incisisaste Sesion Correctamente")
-                            .setPositiveButton("Acepar", null)
-                            .show();
-                } else {
-                    new AlertDialog.Builder(MainActivity.this)
-                            .setTitle("Error")
-                            .setMessage("Usuario o Contraseña Incorrecta")
-                            .setPositiveButton("Acepar", null)
-                            .show();
-                }*/
-                
                 validarDatos();
             }
         });
 
-
-
-
+        // Al  darle click ene registrarse
         lblRegistrarme = findViewById(R.id.lblRegistrarme);
         lblRegistrarme.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,21 +85,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void validarDatos() {
+
+        textEmail.setErrorEnabled(false);
+        textPassword.setErrorEnabled(false);
+
         usuario = textEmail.getEditText() != null ? textEmail.getEditText().getText().toString().trim() : "";
         password = textPassword.getEditText() != null ? textPassword.getEditText().getText().toString().trim() : "";
 
+        boolean error = false;
+
         if (!Patterns.EMAIL_ADDRESS.matcher(usuario).matches()){
-            Toast.makeText(this, "debe ingresar un usuario", Toast.LENGTH_SHORT).show();
+            textEmail.setError(getString(R.string.error_usuario));
+            error = true;
         } else if (TextUtils.isEmpty(password)) {
-            Toast.makeText(this, "Debe ingresar uan acontraseña", Toast.LENGTH_SHORT).show();
+            textPassword.setError(getString(R.string.error_password));
+            error = true;
         } else {
             login();
+        }
+
+        if (error){
+            return;
         }
 
     }
 
     private void login() {
-        progressDialog.setMessage("Iniciando Sesion ...");
+        progressDialog.setMessage(getString(R.string.log_iniciando_sesion));
         progressDialog.show();
         mAuth.signInWithEmailAndPassword(usuario, password)
                 .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
@@ -163,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(new Intent(MainActivity.this, DashboardActivity.class));
                             finish();
                         } else {
-                            Toast.makeText(MainActivity.this, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, getString(R.string.log_error_iniciar_sesion), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
