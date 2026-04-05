@@ -1,4 +1,4 @@
-package com.gadel.myapplication;
+package com.gadel.myapplication.ui.login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -17,13 +17,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.gadel.myapplication.ui.dashboard.DashboardActivity;
+import com.gadel.myapplication.R;
+import com.gadel.myapplication.ui.register.RegistroUActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     //credenciales temporales para el login
 
     /*private static String USER = "admin@gmail.com";
@@ -31,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     int intentos = 0;*/
 
     FirebaseAuth mAuth;
+
     ProgressDialog progressDialog;
     String usuario="", password="";
 
@@ -57,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        progressDialog = new ProgressDialog(MainActivity.this);
+        progressDialog = new ProgressDialog(LoginActivity.this);
         progressDialog.setTitle(getString(R.string.log_iniciando_sesion));
         progressDialog.setCanceledOnTouchOutside(false);
 
@@ -75,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         lblRegistrarme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, RegistroUActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RegistroUActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -114,15 +118,15 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setMessage(getString(R.string.log_iniciando_sesion));
         progressDialog.show();
         mAuth.signInWithEmailAndPassword(usuario, password)
-                .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressDialog.dismiss();
                         if (task.isSuccessful()){
-                            startActivity(new Intent(MainActivity.this, DashboardActivity.class));
+                            startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
                             finish();
                         } else {
-                            Toast.makeText(MainActivity.this, getString(R.string.log_error_iniciar_sesion), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, getString(R.string.log_error_iniciar_sesion), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

@@ -45,7 +45,19 @@ dependencies {
     //libreria para la base de datos en tiempo real de firebase
     implementation 'com.google.firebase:firebase-database:20.2.2'
 
+    // LOMBOK: compileOnly significa que no se compilará dentro del APK final (no pesa nada)
+    compileOnly("org.projectlombok:lombok:1.18.30")
+    // annotationProcessor es el obrero que escribe los getters y setters invisibles
+    annotationProcessor("org.projectlombok:lombok:1.18.30")
+
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+
+    def room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+
+    // para llamadas asíncronas
+    implementation("androidx.room:room-guava:$room_version")
 }
