@@ -1,4 +1,4 @@
-package com.gadel.myapplication;
+package com.gadel.myapplication.ui.splash;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.gadel.myapplication.ui.login.LoginActivity;
+import com.gadel.myapplication.R;
 
 public class PrecargaActivity extends AppCompatActivity {
 
@@ -27,7 +30,7 @@ public class PrecargaActivity extends AppCompatActivity {
 new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
     @Override
     public void run() {
-        startActivity(new Intent(PrecargaActivity.this, MainActivity.class));
+        startActivity(new Intent(PrecargaActivity.this, LoginActivity.class));
         finish();
     }
     }, 3000);

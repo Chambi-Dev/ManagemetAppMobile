@@ -12,14 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GadelApp">
         <activity
-            android:name=".DashboardActivity"
+            android:name=".ui.dashboard.DashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".RegistroUActivity"
+            android:name=".ui.register.RegistroUActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize"/>
         <activity
-            android:name=".PrecargaActivity"
+            android:name=".ui.splash.PrecargaActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="true" />
     </application>
 

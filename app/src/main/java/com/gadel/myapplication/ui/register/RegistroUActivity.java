@@ -1,4 +1,4 @@
-package com.gadel.myapplication;
+package com.gadel.myapplication.ui.register;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -17,6 +17,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.gadel.myapplication.ui.dashboard.DashboardActivity;
+import com.gadel.myapplication.R;
+import com.gadel.myapplication.ui.login.LoginActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
@@ -78,7 +81,7 @@ public class RegistroUActivity extends AppCompatActivity {
         lblVolverMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RegistroUActivity.this, MainActivity.class);
+                Intent intent = new Intent(RegistroUActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
