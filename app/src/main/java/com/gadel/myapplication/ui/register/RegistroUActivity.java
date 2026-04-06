@@ -20,16 +20,9 @@ import androidx.core.view.WindowInsetsCompat;
 import com.gadel.myapplication.ui.dashboard.DashboardActivity;
 import com.gadel.myapplication.R;
 import com.gadel.myapplication.ui.login.LoginActivity;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+
 
 import java.util.HashMap;
 
@@ -39,7 +32,7 @@ public class RegistroUActivity extends AppCompatActivity {
 
     TextView lblVolverMain;
     Button btnRegistrar;
-    FirebaseAuth mAuth;
+    //FirebaseAuth mAuth;
     String nombre="", apellido="", password="",correo="", confirmarPassword="";
 
     ProgressDialog progressDialog;
@@ -62,7 +55,7 @@ public class RegistroUActivity extends AppCompatActivity {
         etConfirmarPassword = findViewById(R.id.RConfirmarPass);
         btnRegistrar = findViewById(R.id.btnRegistrar);
 
-        mAuth = FirebaseAuth.getInstance();
+        //mAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle(getString(R.string.log_espera));
         progressDialog.setCanceledOnTouchOutside(false);
@@ -123,14 +116,14 @@ public class RegistroUActivity extends AppCompatActivity {
             etConfirmarPassword.setError(getString(R.string.error_password_diferent));
             error =true;
         }else {
-            registrar();
+            //registrar();
         }
         if (error){
             return;
         }
     }
 
-    private void registrar() {
+    /*private void registrar() {
         progressDialog.setMessage(getString(R.string.log_registrando));
         progressDialog.show();
         mAuth.createUserWithEmailAndPassword(correo, password)
@@ -188,5 +181,5 @@ public class RegistroUActivity extends AppCompatActivity {
 
 
 
-    }
+    }*/
 }
