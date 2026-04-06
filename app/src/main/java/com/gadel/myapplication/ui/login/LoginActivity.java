@@ -20,20 +20,13 @@ import androidx.core.view.WindowInsetsCompat;
 import com.gadel.myapplication.ui.dashboard.DashboardActivity;
 import com.gadel.myapplication.R;
 import com.gadel.myapplication.ui.register.RegistroUActivity;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+
 
 public class LoginActivity extends AppCompatActivity {
-    //credenciales temporales para el login
 
-    /*private static String USER = "admin@gmail.com";
-    private static String PASS = "12345678";
-    int intentos = 0;*/
+    //int intentos = 0;
 
-    FirebaseAuth mAuth;
 
     ProgressDialog progressDialog;
     String usuario="", password="";
