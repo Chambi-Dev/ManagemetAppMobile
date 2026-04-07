@@ -14,22 +14,22 @@ public class UserProfile {
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "user_id")
-    private String userId;
+    public String userId;
 
     @ColumnInfo(name = "user_name")
-    private String userName;
+    public String userName;
 
     @ColumnInfo(name = "user_email")
-    private String userEmail;
+    public String userEmail;
 
     @ColumnInfo(name = "user_role")
-    private String userRole;
+    public String userRole;
 
     @ColumnInfo(name = "company_id")
-    private String companyId;
+    public String companyId;
 
     @ColumnInfo(name = "last_sync_date")
-    private String lastSyncDate;
+    public String lastSyncDate;
 
 
 

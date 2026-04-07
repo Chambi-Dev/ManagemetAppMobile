@@ -14,13 +14,13 @@ public class RejectionReasonMaster {
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "reason_id")
-    private String reasonId;
+    public String reasonId;
 
     @ColumnInfo(name = "reason_desc")
-    private String reasonDesc;
+    public String reasonDesc;
 
     @ColumnInfo(name = "company_id")
-    private String companyId;
+    public String companyId;
 
 
 }

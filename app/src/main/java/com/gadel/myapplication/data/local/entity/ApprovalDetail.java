@@ -5,32 +5,32 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Entity(tableName = "approval_detail")
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity(tableName = "approval_details")
 public class ApprovalDetail {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    public int id; // ID interno para SQLite
+
     @NonNull
-    @ColumnInfo(name = "detail_id")
-    private String detailId;
-
     @ColumnInfo(name = "task_id")
-    private String taskId;
+    public String taskId; // La "llave foránea" que lo une con la cabecera (Ej. MR310000022)
 
-    @ColumnInfo(name = "detail_item_no")
-    private Integer detailItemNo;
+    @ColumnInfo(name = "material_no")
+    public String materialNo;
 
-    @ColumnInfo(name = "detail_decription")
-    private String detailDescription;
+    @ColumnInfo(name = "description")
+    public String description;
 
-    @ColumnInfo(name ="detail_quantity")
-    private Double detailQuantity;
+    @ColumnInfo(name = "quantity")
+    public Double quantity;
 
-    @ColumnInfo(name = "detail_unit_price")
-    private Double detailUnitPrice;
-
-
-
+    @ColumnInfo(name = "unit_price")
+    public Double unitPrice;
 }
