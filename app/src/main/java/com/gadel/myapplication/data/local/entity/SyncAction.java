@@ -1,41 +1,31 @@
 package com.gadel.myapplication.data.local.entity;
 
-import android.nfc.tech.NfcA;
-
-import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.experimental.Accessors;
+import lombok.NoArgsConstructor;
 
 @Data
-@Entity(tableName = "sync_action")
-@Accessors(chain = true)
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity(tableName = "sync_actions")
 public class SyncAction {
 
-    @PrimaryKey
-    @NonNull
-    @ColumnInfo(name = "action_id")
-    private String actionId;
+    @PrimaryKey(autoGenerate = true)
+    public int id; // ID interno de la cola
 
     @ColumnInfo(name = "task_id")
-    private String taskId;
+    public String taskId; // Ej. MR310000024
 
     @ColumnInfo(name = "action_type")
-    private String actionType; // e.g., "APPROVE", "REJECT", "COMMENT"
+    public String actionType; // "APPROVED" o "REJECTED"
 
-    @ColumnInfo(name = "reason_id")
-    private String reasonId; // Optional, for rejection reasons
+    @ColumnInfo(name = "comments")
+    public String comments; // El motivo del rechazo (si lo hay)
 
-    @ColumnInfo(name = "comment")
-    private String comment; // Optional, for any comments
-
-    @ColumnInfo(name = "timestamp")
-    private String timestamp; // ISO 8601 format
-
-    @ColumnInfo(name = "sync_status")
-    private String syncStatus; // e.g., "PENDING", "SYNCED", "FAILED"
-
+    @ColumnInfo(name = "created_at")
+    public long createdAt; // Para saber en qué orden enviarlos al servidor
 }
